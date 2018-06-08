@@ -14,7 +14,7 @@ namespace VisualStudio.PowerShell
 
         [Export]
         [FileExtension(".ps1")]
-        [ContentType("PowerShell1")]
+        [ContentType("PowerShell")]
         internal static FileExtensionToContentTypeDefinition BarFileExtensionDefinition;
     }
 }
