@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/PowerShell/EditorSyntax/master/PowerShellSyntax.tmLanguage
