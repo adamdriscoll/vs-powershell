@@ -44,39 +44,77 @@ namespace VisualStudio.PowerShell
 
 			var extensionDirectory = Directory.GetDirectories(vscodeDirectory).FirstOrDefault(m => m.Contains("ms-vscode.powershell"));
 
-			var script = Path.Combine(extensionDirectory, "scripts", "Start-EditorServices.ps1");
+			var script = Path.Combine(extensionDirectory, "modules", "PowerShellEditorServices", "Start-EditorServices.ps1");
 
-			ProcessStartInfo info = new ProcessStartInfo();
-			info.FileName = @"C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe";
-			info.Arguments = $@"-NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "" & '{script}' -EditorServicesVersion '1.5.1' -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '1.5.1' -AdditionalModules @('PowerShellEditorServices.VSCode') -BundledModulesPath '{extensionDirectory}\modules' -EnableConsoleRepl -LogLevel 'verbose' -LogPath '{extensionDirectory}\logs\VSEditorServices.log' -SessionDetailsPath '{extensionDirectory}\sessions\PSES-VS' -FeatureFlags @()""";
+			var info = new ProcessStartInfo();
+            var sessionFile = $@"{extensionDirectory}\sessions\PSES-VS-{Guid.NewGuid()}";
+            info.FileName = @"C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe";
+			info.Arguments = $@"-NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "" & '{script}' -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '1.7.0' -AdditionalModules @('PowerShellEditorServices.VSCode') -BundledModulesPath '{extensionDirectory}\modules' -EnableConsoleRepl -LogLevel 'verbose' -LogPath '{extensionDirectory}\logs\VSEditorServices.log' -SessionDetailsPath '{sessionFile}' -FeatureFlags @()""";
 			info.RedirectStandardInput = true;
 			info.RedirectStandardOutput = true;
 			info.UseShellExecute = false;
 			info.CreateNoWindow = true;
 
-			Process process = new Process();
+			var process = new Process();
 			process.StartInfo = info;
+            process.OutputDataReceived += Process_OutputDataReceived;
+            process.ErrorDataReceived += Process_ErrorDataReceived;
 
 			if (process.Start())
 			{
-				//Wait for startup....
-				Thread.Sleep(5000);
+                while (!File.Exists(sessionFile))
+                {
+                    Thread.Sleep(50);
 
-				var sessionInfo = File.ReadAllText($@"{extensionDirectory}\sessions\PSES-VS");
+                    if (process.HasExited)
+                    {
+                        return null;
+                    }
+                }
 
-				var sessionInfoJObject = JsonConvert.DeserializeObject<JObject>(sessionInfo);
+                Thread.Sleep(50);
+
+                var sessionInfo = File.ReadAllText(sessionFile);
+
+                var sessionInfoJObject = JsonConvert.DeserializeObject<JObject>(sessionInfo);
 
 				var languageServicePort = (int)sessionInfoJObject["languageServicePort"];
-				TcpClient tcpClient = new TcpClient("localhost", languageServicePort);
-				NetworkStream ns = tcpClient.GetStream();
-				
-				return new Connection(ns, ns);
+
+                int retry = 0;
+
+                while(retry < 3)
+                {
+                    try
+                    {
+                        TcpClient tcpClient = new TcpClient("localhost", languageServicePort);
+                        NetworkStream ns = tcpClient.GetStream();
+
+                        return new Connection(ns, ns);
+                    }
+                    catch
+                    {
+                        retry++;
+                        Thread.Sleep(1000);
+                    }
+                }
+
+                return null;
 			}
 
 			return null;
 		}
 
-		public async Task OnLoadedAsync()
+        private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            Console.WriteLine(e.Data);
+        }
+
+        private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            Console.WriteLine(e.Data);
+        }
+
+        public async Task OnLoadedAsync()
 		{
 			await StartAsync?.InvokeAsync(this, EventArgs.Empty);
 		}
