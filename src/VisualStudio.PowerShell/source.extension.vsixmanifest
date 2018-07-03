@@ -3,7 +3,11 @@
     <Metadata>
         <Identity Id="VisualStudio.PowerShell" Version="0.1" Language="en-US" Publisher="Adam Driscoll" />
         <DisplayName>PowerShell</DisplayName>
-        <Description xml:space="preserve">PowerShell Support for Visual Studio. This project uses PowerShell Editor Services to provide PowerShell IntelliSense and debugging in Visual Studio. </Description>
+        <Description xml:space="preserve">PowerShell Support for Visual Studio 15.8 Preview 3. This project uses PowerShell Editor Services to provide PowerShell IntelliSense and debugging in Visual Studio. Currently, you need to install the VS Code and the PowerShell extension for this extension to work. </Description>
+        <MoreInfo>https://github.com/adamdriscoll/vs-powershell</MoreInfo>
+        <License>LICENSE.txt</License>
+        <Icon>Powershell_256.png</Icon>
+        <Tags>powershell</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 16.0)" />
