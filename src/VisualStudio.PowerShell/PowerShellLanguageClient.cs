@@ -52,7 +52,7 @@ namespace VisualStudio.PowerShell
             var info = new ProcessStartInfo();
             var sessionFile = $@"{stateDirectory}\sessions\PSES-VS-{Guid.NewGuid()}";
             info.FileName = @"C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe";
-			info.Arguments = $@"-NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "" & '{script}' -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '1.7.0' -AdditionalModules @() -BundledModulesPath '{extensionDirectory}\modules' -EnableConsoleRepl -LogLevel 'verbose' -LogPath '{stateDirectory}\logs\VSEditorServices.log' -SessionDetailsPath '{sessionFile}' -FeatureFlags @() -Verbose """;
+			info.Arguments = $@"-NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "" & '{script}' -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '1.7.0' -AdditionalModules @() -BundledModulesPath '{assemblyDirectoryInfo.FullName}' -EnableConsoleRepl -LogLevel 'diagnostic' -LogPath '{stateDirectory}\logs\VSEditorServices.log' -SessionDetailsPath '{sessionFile}' -FeatureFlags @() -Verbose """;
 			info.RedirectStandardInput = true;
 			info.RedirectStandardOutput = true;
 			info.UseShellExecute = false;
