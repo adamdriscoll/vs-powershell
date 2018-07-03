@@ -10,7 +10,6 @@
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-        <Dependency d:Source="Manual" DisplayName="Language Server Protocol Client Preview" Id="Microsoft.VisualStudio.LanguageServer.Client.Preview" Version="[1.0,2.0)" d:InstallSource="Download" Location="https://marketplace.visualstudio.com/items?itemName=vsext.LanguageServerClientPreview" />
     </Dependencies>
     <Assets>
         <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />

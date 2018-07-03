@@ -9,12 +9,11 @@ namespace VisualStudio.PowerShell
         [Export]
         [Name("PowerShell")]
         [BaseDefinition(CodeRemoteContentDefinition.CodeRemoteContentTypeName)]
-        internal static ContentTypeDefinition BarContentTypeDefinition;
-
+        internal static ContentTypeDefinition PowerShellContentTypeDefinition;
 
         [Export]
         [FileExtension(".ps1")]
         [ContentType("PowerShell")]
-        internal static FileExtensionToContentTypeDefinition BarFileExtensionDefinition;
+        internal static FileExtensionToContentTypeDefinition PowerShellFileExtensionDefinition;
     }
 }
