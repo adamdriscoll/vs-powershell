@@ -33,25 +33,30 @@ namespace VisualStudio.PowerShell
 		public async Task<Connection> ActivateAsync(CancellationToken token)
 		{
 			await Task.Yield();
+            var assemblyDirectoryInfo = new FileInfo(GetType().Assembly.Location).Directory;
 
-			var vscodeDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".vscode", "extensions");
-			if (!Directory.Exists(vscodeDirectory))
-			{
-				throw new Exception("PowerShell VS Code extension required.");
-			}
+            var extensionDirectory = Path.Combine(assemblyDirectoryInfo.FullName, "PowerShellEditorServices");
+			var script = Path.Combine(extensionDirectory, "Start-EditorServices.ps1");
 
-			var extensionDirectory = Directory.GetDirectories(vscodeDirectory).FirstOrDefault(m => m.Contains("ms-vscode.powershell"));
+            var stateDirectory = Path.Combine(Environment.ExpandEnvironmentVariables("%APPDATA%"), "PowerShellEditorServices");
 
-			var script = Path.Combine(extensionDirectory, "modules", "PowerShellEditorServices", "Start-EditorServices.ps1");
+            if (!Directory.Exists(Path.Combine(stateDirectory, "sessions"))) {
+                Directory.CreateDirectory(Path.Combine(stateDirectory, "sessions"));
+            }
 
-			var info = new ProcessStartInfo();
-            var sessionFile = $@"{extensionDirectory}\sessions\PSES-VS-{Guid.NewGuid()}";
+            if (!Directory.Exists(Path.Combine(stateDirectory, "logs")))
+            {
+                Directory.CreateDirectory(Path.Combine(stateDirectory, "logs"));
+            }
+
+            var info = new ProcessStartInfo();
+            var sessionFile = $@"{stateDirectory}\sessions\PSES-VS-{Guid.NewGuid()}";
             info.FileName = @"C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe";
-			info.Arguments = $@"-NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "" & '{script}' -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '1.7.0' -AdditionalModules @('PowerShellEditorServices.VSCode') -BundledModulesPath '{extensionDirectory}\modules' -EnableConsoleRepl -LogLevel 'verbose' -LogPath '{extensionDirectory}\logs\VSEditorServices.log' -SessionDetailsPath '{sessionFile}' -FeatureFlags @()""";
+			info.Arguments = $@"-NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "" & '{script}' -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '1.7.0' -AdditionalModules @() -BundledModulesPath '{extensionDirectory}\modules' -EnableConsoleRepl -LogLevel 'verbose' -LogPath '{stateDirectory}\logs\VSEditorServices.log' -SessionDetailsPath '{sessionFile}' -FeatureFlags @() -Verbose """;
 			info.RedirectStandardInput = true;
 			info.RedirectStandardOutput = true;
 			info.UseShellExecute = false;
-			info.CreateNoWindow = true;
+			info.CreateNoWindow = false;
 
 			var process = new Process();
 			process.StartInfo = info;

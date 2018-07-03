@@ -55,6 +55,86 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="PowerShellEditorServices\bin\Core\libdisablekeyecho.dylib" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\bin\Core\libdisablekeyecho.so" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\en-US\Strings.psd1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\PowerShellEditorServices.Commands.psd1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\PowerShellEditorServices.Commands.psm1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\PowerShellEditorServices.Commands.types.ps1xml" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\Private\BuiltInCommands.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\CmdletInterface.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\ConvertFrom-ScriptExtent.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\ConvertTo-ScriptExtent.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      </Content>
+    <Content Include="PowerShellEditorServices\Commands\Public\Find-Ast.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\Get-Token.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\Import-EditorCommand.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\Join-ScriptExtent.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\Out-CurrentFile.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\Set-ScriptExtent.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\Commands\Public\Test-ScriptExtent.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+      <Content Include="PowerShellEditorServices\PowerShellEditorServices.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      </Content>
+      <Content Include="PowerShellEditorServices\PowerShellEditorServices.psm1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      </Content>
+      <Content Include="PowerShellEditorServices\Start-EditorServices.ps1" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -66,6 +146,102 @@
     </Content>
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Microsoft.PowerShell.EditorServices.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Microsoft.PowerShell.EditorServices.Host.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Microsoft.PowerShell.EditorServices.Host.pdb" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Microsoft.PowerShell.EditorServices.pdb" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Microsoft.PowerShell.EditorServices.Protocol.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Microsoft.PowerShell.EditorServices.Protocol.pdb" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Serilog.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Serilog.Sinks.Async.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Serilog.Sinks.Console.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\Serilog.Sinks.File.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Core\UnixConsoleEcho.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Microsoft.PowerShell.EditorServices.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Microsoft.PowerShell.EditorServices.Host.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Microsoft.PowerShell.EditorServices.Host.pdb" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Microsoft.PowerShell.EditorServices.pdb" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Microsoft.PowerShell.EditorServices.Protocol.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Microsoft.PowerShell.EditorServices.Protocol.pdb" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Newtonsoft.Json.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Serilog.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Serilog.Sinks.Async.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Serilog.Sinks.Console.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\Serilog.Sinks.File.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\bin\Desktop\UnixConsoleEcho.dll" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="PowerShellEditorServices\Third Party Notices.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Powershell_256.png">
